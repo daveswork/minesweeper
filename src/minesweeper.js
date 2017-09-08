@@ -1,22 +1,46 @@
-const printBoard = (board) =>{
-    console.log("Current Board:");
-    console.log(board[0].join(' | '));
-    console.log(board[1].join(' | '));
-    console.log(board[2].join(' | '));
+const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
+    let board = [];
+    for(let rowsIndex = 0; rowsIndex < numberOfRows ;rowsIndex++){
+        let row = [];
+        for(let colIndex = 0; colIndex < numberOfColumns; colIndex++){
+                row.push(' ');
+        };
+        board.push(row);
+    };
+    return board;
 };
 
-let board = [];
+const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs)=> {
+    let board = [];
+    for(let rowsIndex = 0; rowsIndex < numberOfRows ;rowsIndex++){
+        let row = [];
+        for(let colIndex = 0; colIndex < numberOfColumns; colIndex++){
+                row.push(null);
+        };
+        board.push(row);
+    };
+    let numberOfBombsPlaced = 0;
+    while(numberOfBombsPlaced < numberOfBombs){
+        //Need to add logic so new bombs don't get place on top of existing bombs
+        let randomRowIndex = Math.floor(Math.random() * numberOfRows);
+        let randomColIndex = Math.floor(Math.random() * numberOfColumns);
+        board[randomRowIndex][randomColIndex] = 'B';
+        numberOfBombsPlaced++;
+        
+    };
 
-board = [
-[" ", " ", " "], 
-[" ", " ", " "], 
-[" ", " ", " "]
-];
 
-printBoard(board);
+    return board;
+};
 
-board[0][1] = '1';
-board[2][2] = 'B';
+const printBoard = (board) => {
+    console.log(board.map(row => row.join(' | ')).join('\n'));
+};
 
-printBoard(board);
+let playerBoard = generatePlayerBoard(3,4);
+let bombBoard = generateBombBoard(3,4,5);
 
+console.log('Player Board:');
+printBoard(playerBoard);
+console.log('Bomb Board:');
+printBoard(bombBoard);
