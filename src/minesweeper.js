@@ -26,12 +26,26 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs)=> {
         let randomColIndex = Math.floor(Math.random() * numberOfColumns);
         board[randomRowIndex][randomColIndex] = 'B';
         numberOfBombsPlaced++;
-        
+
     };
 
 
     return board;
 };
+
+const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) =>{
+  const neighborOffsets = [
+    [-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]
+  ];
+  const numberOfRows = bombBoard.length;
+  const numberOfColumns = bombBoard[0].length;
+  let numberOfBombs = 0;
+  neighborOffsets.forEach(offset => {
+    const neighborRowIndex = rowIndex + offset[0];
+    const neighborColumnIndes = columnIndex + offset[1];
+  });
+
+}
 
 const printBoard = (board) => {
     console.log(board.map(row => row.join(' | ')).join('\n'));

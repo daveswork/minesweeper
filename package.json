@@ -13,5 +13,16 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daveswork/minesweeper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daveswork/minesweeper/issues"
+  },
+  "homepage": "https://github.com/daveswork/minesweeper#readme"
 }
